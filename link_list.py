@@ -26,7 +26,7 @@ class Linked_list:
             temp.next = Node(data)
         self.length+=1
     def insert(self, index:int, data)->None:
-        if index == 0:
+        if index <= 0:
             self.push(data)
         elif index == self.length:
             self.append(data)
@@ -37,6 +37,7 @@ class Linked_list:
                 temp = temp.next
             new_node.next = temp.next
             temp.next = new_node
+            self.length += 1
     def isempty(self):
         return self.length == 0
     def __repr__(self)->str:
@@ -60,7 +61,7 @@ ll.append("amir")
 ll.append("kol")
 ll.push(0)
 print(ll)
-ll.insert(0,"number(0) test")
-ll.insert(len(ll),f"number({len(ll)}) test")
+#ll.insert(0,"number(0) test")
+#ll.insert(len(ll),f"number({len(ll)}) test")
 ll.insert(3,"number(3) test")
 print(ll)
