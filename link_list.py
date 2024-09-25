@@ -1,5 +1,5 @@
 """link list toturial """
-# 0.5
+# 1
 class Node:
     """data container and next node address"""
     def __init__(self,data=None):
@@ -39,7 +39,7 @@ class Linked_list:
             temp.next = new_node
             self.length += 1
     
-    def rev1(self):
+    def reverse1(self):
         prv = self.head
         mid = self.head.next
         nex = self.head.next.next
@@ -54,7 +54,7 @@ class Linked_list:
             nex.next = mid
             self.head = nex
     
-    def rev2(self):
+    def reverse2(self):
         pre = None
         cur = self.head
         while cur:
@@ -119,7 +119,7 @@ ll.push(1)
 ll.append("amir")
 ll.append("kol")
 print(ll)
-ll.rev2()
+ll.reverse2()
 print(ll)
 print(ll.pop(0))
 print(ll)
