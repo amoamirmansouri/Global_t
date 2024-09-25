@@ -39,7 +39,7 @@ class Linked_list:
             temp.next = new_node
             self.length += 1
     
-    def rev(self):
+    def rev1(self):
         prv = self.head
         mid = self.head.next
         nex = self.head.next.next
@@ -53,7 +53,16 @@ class Linked_list:
             mid.next = prv
             nex.next = mid
             self.head = nex
-        
+    
+    def rev2(self):
+        pre = None
+        cur = self.head
+        while cur:
+            _next = cur.next
+            cur.next = pre
+            pre = cur
+            cur = _next
+        self.head = pre
             
     def seter(self, lst:list)-> None:
         for item in lst:
@@ -69,7 +78,6 @@ class Linked_list:
                 temp.next = None
                 return val
         elif index<=0:
-            print("mio")
             self.length-=1
             val = self.head.data
             self.head = self.head.next
@@ -102,7 +110,7 @@ class Linked_list:
         return self.length
 
 
-numbers_list = list(range(100,201))
+
 ll = Linked_list()
 ll.push(0)
 ll.push(2)
@@ -111,7 +119,7 @@ ll.push(1)
 ll.append("amir")
 ll.append("kol")
 print(ll)
-ll.rev()
+ll.rev2()
 print(ll)
-print(ll.pop(1))
+print(ll.pop(0))
 print(ll)
