@@ -1,5 +1,5 @@
 """link list toturial """
-# 2.5
+# 0.5
 class Node:
     """data container and next node address"""
     def __init__(self,data=None):
@@ -28,7 +28,7 @@ class Linked_list:
     def insert(self, index:int, data)->None:
         if index <= 0:
             self.push(data)
-        elif index == self.length:
+        elif index >= self.length:
             self.append(data)
         else:
             temp= self.head
@@ -38,8 +38,56 @@ class Linked_list:
             new_node.next = temp.next
             temp.next = new_node
             self.length += 1
+    
+    def rev(self):
+        prv = self.head
+        mid = self.head.next
+        nex = self.head.next.next
+        prv.next = None
+        while nex.next:
+            mid.next = prv
+            prv = mid
+            mid = nex
+            nex = nex.next
+        else:
+            mid.next = prv
+            nex.next = mid
+            self.head = nex
+        
+            
+    def seter(self, lst:list)-> None:
+        for item in lst:
+            self.append(item)
+    def pop(self,index=None):
+        if index is None or index>=self.length: 
+            temp = self.head
+            while temp.next.next:
+                temp = temp.next
+            else:
+                self.length-=1
+                val = temp.next.data
+                temp.next = None
+                return val
+        elif index<=0:
+            print("mio")
+            self.length-=1
+            val = self.head.data
+            self.head = self.head.next
+            return val
+        else:
+            temp = pre = self.head
+            while index:
+                pre = temp
+                temp = temp.next
+                index-=1
+            else:
+                pre.next = temp.next
+                temp.next=None
+                self.length-=1
+                return temp.data
     def isempty(self):
         return self.length == 0
+    
     def __repr__(self)->str:
         text = str()
         temp = self.head
@@ -53,15 +101,17 @@ class Linked_list:
     def __len__(self)->int:
         return self.length
 
+
+numbers_list = list(range(100,201))
 ll = Linked_list()
+ll.push(0)
 ll.push(2)
 ll.push(5)
 ll.push(1)
 ll.append("amir")
 ll.append("kol")
-ll.push(0)
 print(ll)
-#ll.insert(0,"number(0) test")
-#ll.insert(len(ll),f"number({len(ll)}) test")
-ll.insert(3,"number(3) test")
+ll.rev()
+print(ll)
+print(ll.pop(1))
 print(ll)
